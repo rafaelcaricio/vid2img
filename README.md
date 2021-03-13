@@ -26,3 +26,19 @@ of the official [Rust wrapper](https://gitlab.freedesktop.org/gstreamer/gstreame
 
 ## Installation
 As we use GStreamer, the [installation steps](https://gitlab.freedesktop.org/gstreamer/gstreamer-rs#installation) for the GStreamer-rs crate must be followed.
+
+We make use of the following GStreamer plugins:
+[`uridecodebin`](https://gstreamer.freedesktop.org/documentation/playback/uridecodebin.html), [`videoconvert`](https://gstreamer.freedesktop.org/documentation/videoconvert/index.html),
+[`videoscale`](https://gstreamer.freedesktop.org/documentation/videoscale/index.html),
+[`capsfilter`](https://gstreamer.freedesktop.org/documentation/coreelements/capsfilter.html),
+[`pngenc`](https://gstreamer.freedesktop.org/documentation/png/pngenc.html),
+[`appsrc`](https://gstreamer.freedesktop.org/documentation/app/appsrc.html).
+
+### Usage
+
+To use this library, add the following dependency to `Cargo.toml`:
+
+```toml
+[dependencies]
+vid2img = "0.1.0"
+```
