@@ -3,7 +3,13 @@ name = "vid2img"
 version = "0.1.0"
 authors = ["Rafael Caricio <rafael@caricio.com>"]
 edition = "2018"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+glib = "0.10.1"
+gstreamer = "0.16.2"
+gstreamer-app = "0.16.0"
+gstreamer-video = "0.16.0"
+log = "0.4"
