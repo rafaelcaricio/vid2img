@@ -14,12 +14,11 @@
 //!
 //! ```no_run
 //! use std::path::Path;
-//! use vid2img::FileSource;
 //!
 //! fn main() {
 //!     let file_path = Path::new("video.mp4");
 //!
-//!     let frame_source = FileSource::new(file_path, (200, 200)).unwrap();
+//!     let frame_source = vid2img::FileSource::new(file_path, (200, 200)).unwrap();
 //!     for frame in frame_source.into_iter() {
 //!         if let Ok(Some(png_img_data)) = frame {
 //!             // do something with the image data here ...

@@ -1,6 +1,8 @@
 use crate::StreamError;
 use crate::{FrameData, VideoStream, VideoStreamIterator};
 use std::path::{Path, PathBuf};
+use std::fs;
+use std::io;
 
 pub struct FileSource {
     source: PathBuf,
@@ -9,11 +11,12 @@ pub struct FileSource {
 
 impl FileSource {
     pub fn new(source: &Path, frame_size: (u32, u32)) -> Result<Self, CaptureError> {
+        let source = fs::canonicalize(source)?;
         if !source.exists() {
             return Err(CaptureError::FileNotFound);
         }
         Ok(Self {
-            source: source.to_path_buf(),
+            source,
             frame_size,
         })
     }
@@ -34,6 +37,14 @@ impl IntoIterator for FileSource {
     }
 }
 
+#[derive(Debug)]
 pub enum CaptureError {
+    IoError(io::Error),
     FileNotFound,
+}
+
+impl From<io::Error> for CaptureError {
+    fn from(err: io::Error) -> Self {
+        CaptureError::IoError(err)
+    }
 }

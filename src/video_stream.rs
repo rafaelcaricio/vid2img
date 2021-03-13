@@ -3,8 +3,11 @@ use gst::prelude::*;
 use gstreamer as gst;
 use gstreamer_app as gst_app;
 use std::sync::mpsc::{sync_channel, Receiver, TryRecvError, TrySendError};
+use std::sync::Once;
 
 pub type FrameData = Vec<u8>;
+
+static INIT_GST: Once = Once::new();
 
 pub struct VideoStream {
     pipeline_description: String,
@@ -12,12 +15,17 @@ pub struct VideoStream {
 
 impl VideoStream {
     pub fn new<S: AsRef<str>>(pipeline_description: S) -> Self {
+        INIT_GST.call_once(|| {
+            log::trace!("Initializing GStreamer..");
+            gst::init().expect("Could not initialize GStreamer!");
+        });
         Self {
             pipeline_description: String::from(pipeline_description.as_ref()),
         }
     }
 }
 
+#[derive(Debug)]
 pub struct GstErrorMessage {
     pub src: String,
     pub error: String,
@@ -25,6 +33,7 @@ pub struct GstErrorMessage {
     pub source: glib::Error,
 }
 
+#[derive(Debug)]
 pub enum StreamError {
     GstError(GstErrorMessage),
     FrameCaptureError,
