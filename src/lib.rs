@@ -1,4 +1,4 @@
-//! Vid2img is a Rust crate that allows the use of a video file as a collection of frame images. This crate exposes
+//! vid2img is a Rust crate that allows the use of a video file as a collection of frame images. This crate exposes
 //! a [`vid2img::FileSource`] type that accepts a video file path and the desired size of the frames, then you can convert the
 //! instance into a iterator (`.into_iter()`). On every iteration you will receive a video frame data encoded as PNG.
 //!
