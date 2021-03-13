@@ -1,11 +1,13 @@
 [package]
 name = "vid2img"
+description = "Use video content as collection of images."
 version = "0.1.0"
 authors = ["Rafael Caricio <rafael@caricio.com>"]
 edition = "2018"
 license = "MIT"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+categories = ["multimedia"]
+repository = "https://github.com/rafaelcaricio/vid2img"
+keywords = ["gstreamer", "multimedia", "audio", "video"]
 
 [dependencies]
 glib = "0.10.1"
