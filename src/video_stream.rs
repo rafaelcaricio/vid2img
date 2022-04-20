@@ -33,9 +33,11 @@ pub struct GstErrorMessage {
     pub source: glib::Error,
 }
 
-#[derive(Debug)]
+#[derive(Debug, thiserror::Error)]
 pub enum StreamError {
+    #[error("GST error: {0:?}")]
     GstError(GstErrorMessage),
+    #[error("frame capture error")]
     FrameCaptureError,
 }
 
