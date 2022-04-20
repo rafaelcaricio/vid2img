@@ -38,13 +38,8 @@ impl IntoIterator for FileSource {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, thiserror::Error)]
 pub enum CaptureError {
-    IoError(io::Error),
-}
-
-impl From<io::Error> for CaptureError {
-    fn from(err: io::Error) -> Self {
-        CaptureError::IoError(err)
-    }
+    #[error("IO error: {0}")]
+    IoError(#[from] io::Error),
 }
