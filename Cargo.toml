@@ -1,7 +1,7 @@
 [package]
 name = "vid2img"
 description = "Use video content as collection of images."
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Rafael Caricio <rafael@caricio.com>"]
 edition = "2018"
 license = "MIT"
