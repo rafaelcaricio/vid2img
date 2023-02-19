@@ -29,7 +29,7 @@ impl IntoIterator for FileSource {
 
     fn into_iter(self) -> Self::IntoIter {
         let pipeline_description = format!(
-            "uridecodebin uri=file://{} ! videoconvert ! videoscale ! capsfilter caps=\"video/x-raw, width={}, height={}\"",
+            "uridecodebin uri=\"file://{}\" ! videoconvert ! videoscale ! capsfilter caps=\"video/x-raw, width={}, height={}\"",
             self.source.to_string_lossy(),
             self.frame_size.0,
             self.frame_size.1
